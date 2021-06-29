@@ -79,11 +79,20 @@ class UserRepositoryTest {
 //        users.getContent().forEach(System.out::println);
 
         // Like ExampleMatcher (contains)
-        User user = User.builder().name("beast").build();
-        ExampleMatcher matcher = ExampleMatcher.matching().withMatcher("name", contains());
-        Example<User> example = Example.of(user, matcher);
+//        User user = User.builder().name("beast").build();
+//        ExampleMatcher matcher = ExampleMatcher.matching().withMatcher("name", contains());
+//        Example<User> example = Example.of(user, matcher);
+//
+//        userRepository.findAll(example).forEach(System.out::println);
 
-        userRepository.findAll(example).forEach(System.out::println);
+        // update
+        userRepository.save(User.builder().name("충내르").email("충내@이메일.com").build());
+
+        User user = userRepository.findById(1L).orElseThrow(RuntimeException::new);
+        user.setEmail("noroguy@pornhub.com");
+
+        userRepository.save(user);
+
 
     }
 
