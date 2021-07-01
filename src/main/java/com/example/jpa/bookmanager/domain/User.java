@@ -13,6 +13,7 @@ import java.util.List;
 @RequiredArgsConstructor
 @Builder
 @Entity
+@Table(name = "user", indexes = {@Index(columnList = "name")}, uniqueConstraints = {@UniqueConstraint(columnNames = {"email"})})
 public class User {
 
     @Id
@@ -22,8 +23,16 @@ public class User {
     @NonNull
     private String name;
     private String email;
+
+    @Column(updatable = false)
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;
+
+    @Transient
+    private String testData;
+
+    @Enumerated(value = EnumType.STRING)
+    private Gender gender;
 
     @OneToMany(fetch = FetchType.EAGER)
     private List<Address> address;
