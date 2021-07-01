@@ -1,4 +1,12 @@
 [JPA MEMO](https://github.com/kimmoonkyung/notepad/blob/master/JPA_MEMO.md)
+
+> ![](src/main/resources/static/query-method-0.png)
+>
+> ![](src/main/resources/static/query-method-1.png)
+>
+> ![](src/main/resources/static/query-method-2.png)
+>
+> ![](src/main/resources/static/query-method-3.png)
 <!--
 # Getting Started
 
