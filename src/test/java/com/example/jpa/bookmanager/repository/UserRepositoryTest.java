@@ -1,6 +1,7 @@
 package com.example.jpa.bookmanager.repository;
 
 import com.example.jpa.bookmanager.domain.User;
+import org.assertj.core.util.Lists;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -99,7 +100,7 @@ class UserRepositoryTest {
 
     @Test
     void select() {
-//        System.out.println(userRepository.findByName("mxxnkyung"));
+        System.out.println(userRepository.findByName("mxxnkyung"));
 //
 //        System.out.println(">>> findByEmail : " + userRepository.findByEmail("mxxnkyung@gmail.com"));
 //        System.out.println(">>> getByEmail : " + userRepository.getByEmail("mxxnkyung@gmail.com"));
@@ -129,6 +130,16 @@ class UserRepositoryTest {
 //        System.out.println(">>> findByIdBetween : " + userRepository.findByIdBetween(1L, 3L));
 
 //        System.out.println(">>> findByIdGreaterThanEqualAndIdLessThanEqual : " + userRepository.findByIdGreaterThanEqualAndIdLessThanEqual(1L, 3L));
+
+//        System.out.println(">>> findByIdIsNotNull : " + userRepository.findByIdIsNotNull());
+//        System.out.println(">>> findByAddressIsNotEmpty : " + userRepository.findByAddressIsNotEmpty());
+//        System.out.println(">>> findByNameIn : " + userRepository.findByNameIn(Lists.newArrayList("mxxnkyung", "norotoo")));
+
+//        System.out.println(">>> findByStartingWith : " + userRepository.findByNameStartingWith("beast"));
+//        System.out.println(">>> findByEndingWith : " + userRepository.findByNameEndingWith("yun"));
+//        System.out.println(">>> findByContains : " + userRepository.findByNameContains("xx"));
+//
+//        System.out.println(">>> findByNameLike : " + userRepository.findByNameLike("%xx%"));
 
 
 
