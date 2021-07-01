@@ -5,10 +5,7 @@ import org.assertj.core.util.Lists;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.data.domain.Example;
-import org.springframework.data.domain.ExampleMatcher;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.*;
 
 import java.time.LocalDateTime;
 
@@ -100,7 +97,7 @@ class UserRepositoryTest {
 
     @Test
     void select() {
-        System.out.println(userRepository.findByName("mxxnkyung"));
+//        System.out.println(userRepository.findByName("mxxnkyung"));
 //
 //        System.out.println(">>> findByEmail : " + userRepository.findByEmail("mxxnkyung@gmail.com"));
 //        System.out.println(">>> getByEmail : " + userRepository.getByEmail("mxxnkyung@gmail.com"));
@@ -141,7 +138,19 @@ class UserRepositoryTest {
 //
 //        System.out.println(">>> findByNameLike : " + userRepository.findByNameLike("%xx%"));
 
+    }
 
+    @Test
+    void pagingAndSortingTest() {
+//        System.out.println(">>> findTop1ByName : " + userRepository.findTop1ByName("mxxnkyung"));
+//        System.out.println(">>> findTopByNameOrderByIdDesc : " + userRepository.findTopByNameOrderByIdDesc("mxxnkyung"));
+//        System.out.println(">>> findFirstByNameOrderByIdDescEmailAsc : " + userRepository.findFirstByNameOrderByIdDescEmailAsc("mxxnkyung"));
+
+//        System.out.println(">>> findFirstByNameWithSortParams : " + userRepository.findFirstByName("mxxnkyung", Sort.by(Sort.Order.desc("id"))));
+//        System.out.println(">>> findFirstByNameWithSortParams : " + userRepository.findFirstByName("mxxnkyung", Sort.by(Sort.Order.desc("id"), Sort.Order.asc("email"))));
+
+        System.out.println(">>> findByNameWithPaging page 1p : " + userRepository.findByName("mxxnkyung", PageRequest.of(0, 1, Sort.by(Sort.Order.desc("id")))).getContent());
+        System.out.println(">>> findByNameWithPaging page 2p : " + userRepository.findByName("mxxnkyung", PageRequest.of(1, 1, Sort.by(Sort.Order.desc("id")))).getContent());
 
     }
 
