@@ -1,21 +1,18 @@
 package com.example.jpa.bookmanager.domain;
 
-
 import lombok.*;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
-import java.util.List;
 
+@Entity
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 @RequiredArgsConstructor
 @Builder
-@Entity
 @EntityListeners(value = MyEntityListener.class)
-//@Table(name = "user", indexes = {@Index(columnList = "name")}, uniqueConstraints = {@UniqueConstraint(columnNames = {"email"})})
-public class User implements Auditable{
+public class Book implements Auditable {
 
     @Id
     @GeneratedValue
@@ -23,32 +20,21 @@ public class User implements Auditable{
 
     @NonNull
     private String name;
-    private String email;
+    private String author;
 
-    @Column(updatable = false)
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;
 
-    @Transient
-    private String testData;
-
-    @Enumerated(value = EnumType.STRING)
-    private Gender gender;
-
     @PrePersist
     public void prePersist() {
-        System.out.println(">>> prePersist ! ");
         this.createdAt = LocalDateTime.now();
         this.updatedAt = LocalDateTime.now();
     }
 
     @PreUpdate
     public void preUpdate() {
-        System.out.println(">>> preUpdate ! ");
         this.updatedAt = LocalDateTime.now();
     }
 
-    @OneToMany(fetch = FetchType.EAGER)
-    private List<Address> address;
 
 }

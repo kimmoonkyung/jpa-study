@@ -179,4 +179,43 @@ class UserRepositoryTest {
 
         System.out.println(">>> : " + userRepository.findRawRecord().get("gender"));
     }
+
+    @Test
+    void listenerTest() {
+        User user = User.builder()
+                .name("짐승내")
+                .email("짐능내@이메일")
+                .build();
+        userRepository.save(user);
+
+        User user2 = userRepository.findById(1L).orElseThrow(RuntimeException::new);
+        user2.setName("짐승균");
+        userRepository.save(user2);
+
+        userRepository.deleteById(4L);
+    }
+
+    @Test
+    void prePersistTest() {
+        User user = User.builder()
+                .name("짐승내")
+                .email("짐능내@이메일")
+//                .createdAt(LocalDateTime.now())
+//                .updatedAt(LocalDateTime.now())
+                .build();
+        userRepository.save(user);
+
+        System.out.println(userRepository.findByEmail("짐능내@이메일"));
+    }
+
+    @Test
+    void preUpdateTest() {
+        User user = userRepository.findById(1L).orElseThrow(RuntimeException::new);
+        System.out.println(">>> as - is : " + user);
+
+        user.setName("짐승균");
+        userRepository.save(user);
+
+        System.out.println(">>> to - be : " + userRepository.findAll().get(0));
+    }
 }
