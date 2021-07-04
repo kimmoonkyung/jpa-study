@@ -10,6 +10,7 @@ public class MyEntityListener {
         if(obj instanceof Auditable) {
             ((Auditable) obj).setCreatedAt(LocalDateTime.now());
             ((Auditable) obj).setUpdatedAt(LocalDateTime.now());
+
         }
     }
 
