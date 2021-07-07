@@ -1,5 +1,7 @@
 package com.example.jpa.bookmanager.domain;
 
+import com.example.jpa.bookmanager.domain.listener.Auditable;
+import com.example.jpa.bookmanager.domain.listener.MyEntityListener;
 import lombok.*;
 
 import javax.persistence.*;
@@ -7,12 +9,14 @@ import java.time.LocalDateTime;
 
 @Entity
 @Data
+@ToString(callSuper = true)
+@EqualsAndHashCode(callSuper = true)
 @AllArgsConstructor
 @NoArgsConstructor
 @RequiredArgsConstructor
 @Builder
-@EntityListeners(value = MyEntityListener.class)
-public class Book implements Auditable {
+//@EntityListeners(value = MyEntityListener.class)
+public class Book extends BaseEntity implements Auditable {
 
     @Id
     @GeneratedValue
@@ -22,8 +26,8 @@ public class Book implements Auditable {
     private String name;
     private String author;
 
-    private LocalDateTime createdAt;
-    private LocalDateTime updatedAt;
+//    private LocalDateTime createdAt;
+//    private LocalDateTime updatedAt;
 
 //    @PrePersist
 //    public void prePersist() {
