@@ -18,7 +18,8 @@ public class BookRepositoryTest {
     void bookTest() {
         Book book = Book.builder()
                 .name("JPA 공부")
-                .author("석태진")
+                .authorId(1L)
+                .publisherId(1L)
                 .build();
 
         bookRepository.save(book);

@@ -16,15 +16,25 @@ import java.time.LocalDateTime;
 @RequiredArgsConstructor
 @Builder
 //@EntityListeners(value = MyEntityListener.class)
-public class Book extends BaseEntity implements Auditable {
+public class Book extends BaseEntity {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @NonNull
     private String name;
-    private String author;
+
+    private String category;
+
+    private Long authorId;
+
+    private Long publisherId;
+
+    @OneToOne(mappedBy = "book")
+    @ToString.Exclude
+    private BookReviewInfo bookReviewInfo;
+
 
 //    private LocalDateTime createdAt;
 //    private LocalDateTime updatedAt;
