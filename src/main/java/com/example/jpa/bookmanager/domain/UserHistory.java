@@ -1,13 +1,9 @@
 package com.example.jpa.bookmanager.domain;
 
-import com.example.jpa.bookmanager.domain.listener.Auditable;
 import lombok.*;
-import org.springframework.data.annotation.CreatedDate;
-import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import javax.persistence.*;
-import java.time.LocalDateTime;
 
 @Entity
 @NoArgsConstructor
@@ -23,6 +19,7 @@ public class UserHistory extends BaseEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column(name = "user_id")
     private Long userId;
 
     private String name;

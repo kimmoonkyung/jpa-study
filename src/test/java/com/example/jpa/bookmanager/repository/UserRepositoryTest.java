@@ -2,6 +2,7 @@ package com.example.jpa.bookmanager.repository;
 
 import com.example.jpa.bookmanager.domain.Gender;
 import com.example.jpa.bookmanager.domain.User;
+import com.example.jpa.bookmanager.domain.UserHistory;
 import org.assertj.core.util.Lists;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,6 +10,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.data.domain.*;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 import static org.springframework.data.domain.ExampleMatcher.GenericPropertyMatchers.contains;
 import static org.springframework.data.domain.ExampleMatcher.GenericPropertyMatchers.endsWith;
@@ -233,6 +235,31 @@ class UserRepositoryTest {
         userRepository.save(user);
 
         userHistoryRepository.findAll().forEach(System.out::println);
+
+    }
+
+    @Test
+    void userRelationTest() {
+        User user = User.builder()
+                .name("nochoo")
+                .email("nochoo@gmail.com")
+                .gender(Gender.FEMALE)
+                .build();
+
+        userRepository.save(user);
+
+        user.setName("beastnae");
+        userRepository.save(user);
+
+        user.setEmail("beastnae@jo.com");
+        userRepository.save(user);
+
+//        userHistoryRepository.findAll().forEach(System.out::println);
+
+//        List<UserHistory> result = userHistoryRepository.findByUserId(userRepository.findByEmail("beastnae@jo.com").getId());
+        List<UserHistory> result = userRepository.findByEmail("beastnae@jo.com").getUserHistories();
+
+        result.forEach(System.out::println);
 
     }
 }

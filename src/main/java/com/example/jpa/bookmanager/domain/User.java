@@ -10,6 +10,7 @@ import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 
 @Data
@@ -51,7 +52,11 @@ public class User extends BaseEntity {
 //        this.updatedAt = LocalDateTime.now();
 //    }
 
+//    @OneToMany(fetch = FetchType.EAGER)
+//    private List<Address> address;
+
     @OneToMany(fetch = FetchType.EAGER)
-    private List<Address> address;
+    @JoinColumn(name = "user_id", insertable = false, updatable = false)
+    private List<UserHistory> userHistories; // = new ArrayList<>();
 
 }
