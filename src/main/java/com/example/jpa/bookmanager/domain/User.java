@@ -57,6 +57,6 @@ public class User extends BaseEntity {
 
     @OneToMany(fetch = FetchType.EAGER)
     @JoinColumn(name = "user_id", insertable = false, updatable = false)
-    private List<UserHistory> userHistories; // = new ArrayList<>();
+    private List<UserHistory> userHistories = new ArrayList<>();
 
 }
