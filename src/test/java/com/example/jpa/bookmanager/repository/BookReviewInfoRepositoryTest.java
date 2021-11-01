@@ -49,11 +49,9 @@ class BookReviewInfoRepositoryTest {
     }
 
     private Book givenBook() {
-        Book book = Book.builder()
-                .name("JPA 공부 책")
-                .authorId(1L)
-//                .publisherId(1L)
-                .build();
+        Book book = new Book();
+        book.setName("JPA 공부 책");
+        book.setAuthorId(1L);
 
 //        System.out.println(">>> book : " + bookRepository.findAll());
         return bookRepository.save(book);

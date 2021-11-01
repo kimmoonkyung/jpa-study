@@ -29,11 +29,9 @@ public class BookRepositoryTest {
 
     @Test
     void bookTest() {
-        Book book = Book.builder()
-                .name("JPA 공부")
-                .authorId(1L)
-//                .publisherId(1L)
-                .build();
+        Book book = new Book();
+        book.setName("JPA 공부");
+        book.setAuthorId(1L);
 
         bookRepository.save(book);
 
@@ -57,10 +55,9 @@ public class BookRepositoryTest {
     }
 
     private Book givenBook(Publisher publisher) {
-        Book book = Book.builder()
-                .name("짐승균의 노충내 정복기")
-                .publisher(publisher)
-                .build();
+        Book book = new Book();
+        book.setName("짐승균의 노충내 정복기");
+        book.setPublisher(publisher);
 
         return bookRepository.save(book);
     }
