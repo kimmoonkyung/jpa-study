@@ -52,7 +52,7 @@ class BookReviewInfoRepositoryTest {
         Book book = Book.builder()
                 .name("JPA 공부 책")
                 .authorId(1L)
-                .publisherId(1L)
+//                .publisherId(1L)
                 .build();
 
 //        System.out.println(">>> book : " + bookRepository.findAll());
