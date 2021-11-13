@@ -26,8 +26,6 @@ public class Book extends BaseEntity {
     @NonNull
     private String name;
 
-    private String test;
-
     private String category;
 
     private Long authorId;
