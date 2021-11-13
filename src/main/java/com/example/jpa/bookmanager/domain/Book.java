@@ -16,6 +16,7 @@ import java.util.List;
 @EqualsAndHashCode(callSuper = true)
 @NoArgsConstructor
 //@Builder
+
 //@EntityListeners(value = MyEntityListener.class)
 public class Book extends BaseEntity {
 
