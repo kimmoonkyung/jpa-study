@@ -8,6 +8,7 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.data.domain.*;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDateTime;
 import java.util.List;
@@ -16,6 +17,7 @@ import static org.springframework.data.domain.ExampleMatcher.GenericPropertyMatc
 import static org.springframework.data.domain.ExampleMatcher.GenericPropertyMatchers.endsWith;
 
 @SpringBootTest // Spring 컨텍스트 로딩해서 테스트에 활용 하겠다는 어노테이션
+@Transactional
 class UserRepositoryTest {
 
     @Autowired
@@ -256,8 +258,8 @@ class UserRepositoryTest {
 
         userHistoryRepository.findAll().forEach(System.out::println);
 
-//        List<UserHistory> result = userHistoryRepository.findByUserId(userRepository.findByEmail("beastnae@jo.com").getId());
-        List<UserHistory> result = userRepository.findByEmail("beastnae@jo.com").getUserHistories();
+        List<UserHistory> result = userHistoryRepository.findByUserId(userRepository.findByEmail("beastnae@jo.com").getId());
+//        List<UserHistory> result = userRepository.findByEmail("beastnae@jo.com").getUserHistories();
 
         result.forEach(System.out::println);
 
